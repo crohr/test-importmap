@@ -1,24 +1,20 @@
-# README
+# Failing test case with importmap-rails 1.1.0 and React Native WebView
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The following breaks on React Native WebView (JS isn't loaded):
 
-Things you may want to cover:
+```
+<WebView
+  source={{
+    uri: "http://localhost:3000",
+    originWhitelist={[
+      'https://*',
+      'blob:*',
+      'http://localhost:3000',
+    ]}
+  }}
+/>
+```
 
-* Ruby version
+This used to work with importmap-rails 1.0.3.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Might be linked to https://github.com/rails/importmap-rails/pull/128
